@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import com.czh.paging3demo.http.HttpManager
 import com.czh.paging3demo.http.api.GithubApi
 import com.czh.paging3demo.http.model.Repo
-import com.czh.paging3demo.paging.GithubPagingSource
+import com.czh.paging3demo.http.paging.GithubPagingSource
 import kotlinx.coroutines.flow.Flow
 
 object GithubRepo {
