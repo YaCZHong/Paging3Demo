@@ -7,6 +7,9 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * 相关博客学习：https://blog.csdn.net/briblue/article/details/70161917
+ */
 class MyDecoration : RecyclerView.ItemDecoration() {
 
     private val mDividerHeight: Int = 2
@@ -38,19 +41,25 @@ class MyDecoration : RecyclerView.ItemDecoration() {
      */
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
+        val dividerLeft = parent.paddingLeft
+        val dividerRight = parent.width - parent.paddingRight
+
+        // 遍历当前屏幕所有可见的 itemView
         repeat(parent.childCount) { index ->
+            // 获取当前屏幕可见的第 index 个 itemView
             val child = parent.getChildAt(index)
+
+            // 获取 itemView 在列表中真实的位置
             val adapterPosition = parent.getChildAdapterPosition(child)
             if (adapterPosition != 0) {
                 val dividerTop = child.top - mDividerHeight
-                val dividerLeft = parent.paddingLeft
                 val dividerBottom = child.top
-                val dividerRight = parent.width - parent.paddingRight
                 c.drawRect(
                     dividerLeft.toFloat(),
                     dividerTop.toFloat(),
                     dividerRight.toFloat(),
-                    dividerBottom.toFloat(), mPaint
+                    dividerBottom.toFloat(),
+                    mPaint
                 )
             }
         }
